@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Profile - Employee Transition System</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
+          <span>TransitionHub</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="nav-label">Core Modules</li>
+        <li><a href="dashboard.html" class="sidebar-link"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li><a href="employees.html" class="sidebar-link active"><i class="bi bi-people-fill"></i> Employee Directory</a></li>
+        
+        <li class="nav-label">Transition Workflow</li>
+        <li><a href="resignation.html" class="sidebar-link"><i class="bi bi-file-earmark-person-fill"></i> Resignations</a></li>
+        <li><a href="retention.html" class="sidebar-link"><i class="bi bi-chat-quote-fill"></i> Retention Management</a></li>
+        <li><a href="knowledge-transfer.html" class="sidebar-link"><i class="bi bi-journal-bookmark-fill"></i> Knowledge Base (KT)</a></li>
+        <li><a href="replacement.html" class="sidebar-link"><i class="bi bi-person-fill-gear"></i> Replacement Pairing</a></li>
+        <li><a href="transition-progress.html" class="sidebar-link"><i class="bi bi-speedometer2"></i> Transition Progress</a></li>
+
+        <li class="nav-label">Analytics & System</li>
+        <li><a href="reports.html" class="sidebar-link"><i class="bi bi-bar-chart-line-fill"></i> Executive Reports</a></li>
+        <li><a href="settings.html" class="sidebar-link"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <img src="" alt="User Avatar" class="user-avatar session-user-avatar">
+          <div class="user-info">
+            <div class="name session-user-name">User Name</div>
+            <div class="role session-user-role">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn"><i class="bi bi-list"></i></button>
+          <h4 class="page-title">Employee Profile</h4>
+        </div>
+        <div class="navbar-right">
+          <button class="icon-btn" id="themeToggleBtn"><i class="bi bi-moon-stars-fill"></i></button>
+          <button class="icon-btn text-danger btn-logout"><i class="bi bi-box-arrow-right"></i></button>
+        </div>
+      </header>
+
+      <div class="content-body" id="profileContent">
+        <!-- Back Link -->
+        <a href="employees.html" class="btn btn-outline-custom btn-sm mb-4">
+          <i class="bi bi-arrow-left me-1"></i> Back to Directory
+        </a>
+
+        <!-- Header Card -->
+        <div class="custom-card mb-4">
+          <div class="d-flex align-items-center gap-4 flex-wrap">
+            <img src="" id="profileAvatar" alt="Avatar" class="rounded-circle" style="width: 90px; height: 90px; object-fit: cover; border: 4px solid var(--primary-light)">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <h4 class="fw-bold mb-0" id="profileName">Loading...</h4>
+                <span class="badge bg-primary ms-2" id="profileIdBadge">EMP-0000</span>
+              </div>
+              <div class="text-muted" id="profileTitle">Designation & Department</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Tabs / Grid -->
+        <div class="row g-4">
+          <div class="col-12 col-lg-8">
+            <!-- Personal & Position Info -->
+            <div class="custom-card mb-4">
+              <h5 class="card-title-main mb-3"><i class="bi bi-person-vcard text-primary me-2"></i> Employment & Contact Details</h5>
+              <div class="row g-3 small">
+                <div class="col-6"><span class="text-muted d-block">Work Email:</span> <strong id="pEmail">-</strong></div>
+                <div class="col-6"><span class="text-muted d-block">Phone Number:</span> <strong id="pPhone">-</strong></div>
+                <div class="col-6"><span class="text-muted d-block">Joining Date:</span> <strong id="pJoiningDate">-</strong></div>
+                <div class="col-6"><span class="text-muted d-block">Total Experience:</span> <strong id="pExperience">-</strong></div>
+                <div class="col-6"><span class="text-muted d-block">Annual Salary:</span> <strong id="pSalary">-</strong></div>
+                <div class="col-6"><span class="text-muted d-block">Reporting Manager:</span> <strong id="pManager">-</strong></div>
+              </div>
+            </div>
+
+            <!-- Skills & Performance -->
+            <div class="custom-card mb-4">
+              <h5 class="card-title-main mb-3"><i class="bi bi-stars text-primary me-2"></i> Skills & Performance Summary</h5>
+              <div class="mb-3">
+                <span class="text-muted d-block small mb-1">Technical Skills:</span>
+                <div class="fw-semibold text-main" id="pSkills">-</div>
+              </div>
+              <div>
+                <span class="text-muted d-block small mb-1">Performance Assessment:</span>
+                <div class="p-3 bg-light rounded border text-main small" id="pPerformance">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <!-- Linked Knowledge Transfer Status -->
+            <div class="custom-card mb-4">
+              <h5 class="card-title-main mb-3"><i class="bi bi-journal-check text-primary me-2"></i> Knowledge Base Items</h5>
+              <div id="profileKTList">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/employees.js"></script>
+</body>
+</html>

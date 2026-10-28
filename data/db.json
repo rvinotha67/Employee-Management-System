@@ -1,0 +1,164 @@
+{
+  "employees": [
+    {
+      "id": "EMP-1001",
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@company.com",
+      "phone": "+1 (555) 234-5678",
+      "department": "Engineering",
+      "designation": "Senior Full Stack Developer",
+      "status": "Resigning",
+      "joiningDate": "2021-03-15",
+      "experienceYears": 5.5,
+      "salary": 115000,
+      "skills": "Node.js, React, PostgreSQL, Docker, AWS",
+      "manager": "Robert Thorne (Engineering VP)",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "projects": [
+        "Core Billing Platform",
+        "Customer Gateway Microservices"
+      ],
+      "performanceSummary": "Exceeds Expectations. Key technical contributor to cloud migration."
+    },
+    {
+      "id": "EMP-1002",
+      "name": "Alex Rivera",
+      "email": "alex.rivera@company.com",
+      "phone": "+1 (555) 876-5432",
+      "department": "Product",
+      "designation": "Lead Product Manager",
+      "status": "Resigning",
+      "joiningDate": "2020-08-10",
+      "experienceYears": 6,
+      "salary": 130000,
+      "skills": "Product Roadmap, User Research, Agile/Scrum, Mixpanel",
+      "manager": "Elena Rostova (Chief Product Officer)",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "projects": [
+        "Enterprise Mobile App",
+        "AI Analytics Integration"
+      ],
+      "performanceSummary": "Outstanding leadership. Delivered Q2 mobile roadmap 2 weeks ahead."
+    },
+    {
+      "id": "EMP-1003",
+      "name": "Emily Chen",
+      "email": "emily.chen@company.com",
+      "phone": "+1 (555) 345-6789",
+      "department": "Design",
+      "designation": "Senior UI/UX Designer",
+      "status": "Retained",
+      "joiningDate": "2022-01-20",
+      "experienceYears": 4.2,
+      "salary": 98000,
+      "skills": "Figma, Design Systems, Prototyping, Usability Testing",
+      "manager": "Alex Rivera (Lead Product Manager)",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "projects": [
+        "Design System 2.0",
+        "Checkout Flow Redesign"
+      ],
+      "performanceSummary": "Consistently high quality visual designs and user research feedback."
+    }
+  ],
+  "resignations": [
+    {
+      "id": "RES-5001",
+      "employeeId": "EMP-1001",
+      "employeeName": "Sarah Jenkins",
+      "department": "Engineering",
+      "designation": "Senior Full Stack Developer",
+      "reason": "Better Offer",
+      "noticeDate": "2026-07-15",
+      "lastWorkingDay": "2026-08-30",
+      "resignationLetter": "I am writing to formally announce my resignation from the Senior Developer role. I have accepted an offer that aligns closer with my long-term career goals.",
+      "comments": "Available to assist with full technical handover and SOP documentation.",
+      "status": "Approved",
+      "submittedAt": "2026-07-15T09:30:00.000Z"
+    }
+  ],
+  "retentions": [
+    {
+      "id": "RET-8001",
+      "resignationId": "RES-5001",
+      "employeeId": "EMP-1001",
+      "employeeName": "Sarah Jenkins",
+      "meetingDate": "2026-06-18",
+      "discussionNotes": "Discussed employee higher education plans. Offered flexible remote hours (20 hrs/week) and educational tuition sponsorship.",
+      "promotionOffered": "Lead UX Architect",
+      "salaryHikeOffered": 15,
+      "internalTransfer": "Design Research Lab",
+      "flexibleWork": "Hybrid / Part-Time (20 hrs)",
+      "otherBenefits": "$5,000 Annual Education Stipend",
+      "finalDecision": "Employee Stayed",
+      "recordedAt": "2026-06-18T16:00:00.000Z"
+    }
+  ],
+  "kt": [
+    {
+      "id": "KT-8358",
+      "employeeId": "EMP-1001",
+      "category": "Daily Responsibilities",
+      "title": "Employee Onboarding Process",
+      "description": "This document explains the employee onboarding process, required documents, account setup, system access, and initial training procedures.",
+      "priority": "Medium",
+      "status": "In Progress",
+      "link": "",
+      "employeeName": "Sarah Jenkins",
+      "updatedAt": "2026-10-28"
+    },
+    {
+      "id": "KT-3001",
+      "employeeId": "EMP-1001",
+      "employeeName": "Sarah Jenkins",
+      "category": "Projects",
+      "title": "Core Billing Architecture & Database Schemas",
+      "description": "Detailed schema walkthrough for Postgres billing DB, Stripe webhook listeners, and recurring invoice cron workers.",
+      "priority": "High",
+      "status": "Completed",
+      "link": "https://github.com/company/billing-core",
+      "updatedAt": "2026-07-22"
+    }
+  ],
+  "replacements": [
+    {
+      "id": "REP-4001",
+      "resigningEmpId": "EMP-1001",
+      "resigningEmpName": "Sarah Jenkins",
+      "replacementEmpId": "EMP-1002",
+      "replacementEmpName": "Alex Rivera",
+      "department": "Engineering",
+      "reportingManager": "CTO Office",
+      "startDate": "2026-08-01",
+      "trainingPeriodDays": 30,
+      "status": "In Handover",
+      "notes": "Robert taking over lead maintenance of Billing API & DB.",
+      "createdAt": "2026-07-20"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "TRN-9001",
+      "resigningEmpId": "EMP-1001",
+      "resigningEmpName": "Sarah Jenkins",
+      "replacementEmpName": "Alex Rivera",
+      "documentationScore": 90,
+      "trainingScore": 80,
+      "shadowScore": 70,
+      "ktScore": 85,
+      "handoverScore": 60,
+      "approvalScore": 50,
+      "overallStatus": "In Progress",
+      "lastUpdated": "2026-07-28"
+    }
+  ],
+  "settings": {
+    "companyName": "Acme Enterprise Systems Inc.",
+    "hrEmail": "hr-support@company.com",
+    "defaultHandoverDays": 30,
+    "notificationsEnabled": true,
+    "emailAlerts": true,
+    "language": "English",
+    "theme": "light"
+  }
+}

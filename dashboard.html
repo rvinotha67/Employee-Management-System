@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Employee Transition & Knowledge Management System</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Responsive Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
+          <span>TransitionHub</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="nav-label">Core Modules</li>
+        <li><a href="dashboard.html" class="sidebar-link active"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li><a href="employees.html" class="sidebar-link"><i class="bi bi-people-fill"></i> Employee Directory</a></li>
+        
+        <li class="nav-label">Transition Workflow</li>
+        <li><a href="resignation.html" class="sidebar-link"><i class="bi bi-file-earmark-person-fill"></i> Resignations</a></li>
+        <li><a href="retention.html" class="sidebar-link"><i class="bi bi-chat-quote-fill"></i> Retention Management</a></li>
+        <li><a href="knowledge-transfer.html" class="sidebar-link"><i class="bi bi-journal-bookmark-fill"></i> Knowledge Base (KT)</a></li>
+        <li><a href="replacement.html" class="sidebar-link"><i class="bi bi-person-fill-gear"></i> Replacement Pairing</a></li>
+        <li><a href="transition-progress.html" class="sidebar-link"><i class="bi bi-speedometer2"></i> Transition Progress</a></li>
+
+        <li class="nav-label">Analytics & System</li>
+        <li><a href="reports.html" class="sidebar-link"><i class="bi bi-bar-chart-line-fill"></i> Executive Reports</a></li>
+        <li><a href="settings.html" class="sidebar-link"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <img src="" alt="User Avatar" class="user-avatar session-user-avatar">
+          <div class="user-info">
+            <div class="name session-user-name">User Name</div>
+            <div class="role session-user-role">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Navbar -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <h4 class="page-title">Executive Dashboard</h4>
+        </div>
+
+        <div class="navbar-right">
+          <!-- Search Everywhere -->
+          <div class="search-input-group d-none d-md-block">
+            <i class="bi bi-search"></i>
+            <input type="text" id="globalSearchInput" class="search-control" placeholder="Search employees, KT items, SOPs...">
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+
+          <!-- Notifications -->
+          <button class="icon-btn" title="Notifications" onclick="App.showToast('You have 3 pending resignation reviews.', 'info')">
+            <i class="bi bi-bell-fill"></i>
+            <span class="badge-dot"></span>
+          </button>
+
+          <!-- Logout -->
+          <button class="icon-btn text-danger btn-logout" title="Sign Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Body -->
+      <div class="content-body">
+        
+        <!-- KPI Cards Grid -->
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>Total Staff</h6>
+                <div class="kpi-value" id="kpiTotalEmployees">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-primary"><i class="bi bi-people"></i></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>Active Staff</h6>
+                <div class="kpi-value" id="kpiActiveEmployees">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-success"><i class="bi bi-person-check"></i></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>Planning to Leave</h6>
+                <div class="kpi-value" id="kpiPlanningToLeave">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-danger"><i class="bi bi-person-dash"></i></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>Retained</h6>
+                <div class="kpi-value" id="kpiRetainedEmployees">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-info-box"><i class="bi bi-shield-heart"></i></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>KT Pending</h6>
+                <div class="kpi-value" id="kpiKTPending">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-warning"><i class="bi bi-hourglass-split"></i></div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-xl-2">
+            <div class="kpi-card">
+              <div class="kpi-info">
+                <h6>KT Completed</h6>
+                <div class="kpi-value" id="kpiKTCompleted">0</div>
+              </div>
+              <div class="kpi-icon-box kpi-purple"><i class="bi bi-journal-check"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="row g-3 mb-4">
+          <div class="col-12 col-lg-5">
+            <div class="custom-card h-100 mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-pie-chart me-1 text-primary"></i> Resignation Reasons</h5>
+              </div>
+              <div style="height: 260px; position: relative;">
+                <canvas id="resignationReasonsChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-7">
+            <div class="custom-card h-100 mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-bar-chart-line me-1 text-primary"></i> Department Turnover & Retention</h5>
+              </div>
+              <div style="height: 260px; position: relative;">
+                <canvas id="departmentTurnoverChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Tables Row -->
+        <div class="row g-3">
+          <div class="col-12 col-xl-8">
+            <div class="custom-card h-100 mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-calendar-event me-1 text-primary"></i> Upcoming Resignations</h5>
+                <a href="resignation.html" class="btn btn-outline-custom btn-sm">View All</a>
+              </div>
+
+              <div class="table-responsive">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>Employee</th>
+                      <th>Department</th>
+                      <th>Last Working Day</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="upcomingResignationsTableBody">
+                    <!-- Populated dynamically by dashboard.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-xl-4">
+            <div class="custom-card h-100 mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-clock-history me-1 text-primary"></i> Recent Activity</h5>
+              </div>
+
+              <div id="activityTimeline">
+                <!-- Populated dynamically by dashboard.js -->
+              </div>
+
+              <div class="mt-4 pt-3 border-top d-grid gap-2">
+                <a href="resignation.html" class="btn btn-primary-custom btn-sm justify-content-center">
+                  <i class="bi bi-plus-lg"></i> Submit Resignation Request
+                </a>
+                <a href="knowledge-transfer.html" class="btn btn-outline-custom btn-sm justify-content-center">
+                  <i class="bi bi-journal-plus"></i> New Knowledge Transfer
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

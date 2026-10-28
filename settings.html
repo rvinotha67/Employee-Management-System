@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Employee Transition & Knowledge Management System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="brand-logo">
+          <div class="brand-icon"><i class="bi bi-box-seam-fill"></i></div>
+          <span>TransitionHub</span>
+        </a>
+      </div>
+
+      <ul class="sidebar-menu">
+        <li class="nav-label">Core Modules</li>
+        <li><a href="dashboard.html" class="sidebar-link"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a></li>
+        <li><a href="employees.html" class="sidebar-link"><i class="bi bi-people-fill"></i> Employee Directory</a></li>
+
+        <li class="nav-label">Transition Workflow</li>
+        <li><a href="resignation.html" class="sidebar-link"><i class="bi bi-file-earmark-person-fill"></i> Resignations</a></li>
+        <li><a href="retention.html" class="sidebar-link"><i class="bi bi-chat-quote-fill"></i> Retention Management</a></li>
+        <li><a href="knowledge-transfer.html" class="sidebar-link"><i class="bi bi-journal-bookmark-fill"></i> Knowledge Base (KT)</a></li>
+        <li><a href="replacement.html" class="sidebar-link"><i class="bi bi-person-fill-gear"></i> Replacement Pairing</a></li>
+        <li><a href="transition-progress.html" class="sidebar-link"><i class="bi bi-speedometer2"></i> Transition Progress</a></li>
+
+        <li class="nav-label">Analytics & System</li>
+        <li><a href="reports.html" class="sidebar-link"><i class="bi bi-bar-chart-line-fill"></i> Executive Reports</a></li>
+        <li><a href="settings.html" class="sidebar-link active"><i class="bi bi-gear-fill"></i> Settings</a></li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-profile-widget">
+          <img src="" alt="User Avatar" class="user-avatar session-user-avatar">
+          <div class="user-info">
+            <div class="name session-user-name">User Name</div>
+            <div class="role session-user-role">HR Director</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <h4 class="page-title">Settings</h4>
+        </div>
+
+        <div class="navbar-right">
+          <button class="icon-btn" id="themeToggleBtn" title="Toggle Theme">
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button class="icon-btn text-danger btn-logout" title="Sign Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-body">
+        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+          <div>
+            <h5 class="fw-bold mb-1">System Configuration</h5>
+            <div class="text-muted small">Manage organization details, workflow defaults, theme preferences, and operational notifications.</div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-xl-8">
+            <div class="custom-card mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-sliders me-1 text-primary"></i> General Settings</h5>
+              </div>
+
+              <form id="settingsForm">
+                <div class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">Company Name</label>
+                    <input type="text" id="settingCompanyName" class="form-control" placeholder="Acme Enterprise Systems Inc.">
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">HR Support Email</label>
+                    <input type="email" id="settingHrEmail" class="form-control" placeholder="hr-support@company.com">
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">Default Handover Days</label>
+                    <input type="number" id="settingHandoverDays" class="form-control" min="1" value="30">
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">Language</label>
+                    <select id="settingLanguage" class="form-select">
+                      <option value="English">English</option>
+                      <option value="Spanish">Spanish</option>
+                      <option value="French">French</option>
+                      <option value="German">German</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label class="form-label fw-semibold">System Theme</label>
+                    <select id="settingThemeSelect" class="form-select">
+                      <option value="light">Light</option>
+                      <option value="dark">Dark</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 col-md-6 d-flex align-items-center">
+                    <div class="form-check form-switch mt-4">
+                      <input class="form-check-input" type="checkbox" id="settingNotifications" checked>
+                      <label class="form-check-label fw-semibold" for="settingNotifications">Enable Notifications</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4 gap-2 flex-wrap">
+                  <button type="button" class="btn btn-outline-custom" id="settingResetBtn">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Reset Data
+                  </button>
+                  <button type="submit" class="btn btn-primary-custom">
+                    <i class="bi bi-check2-circle me-1"></i> Save Settings
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-12 col-xl-4">
+            <div class="custom-card mb-3">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-info-circle me-1 text-primary"></i> System Info</h5>
+              </div>
+
+              <div class="d-grid gap-3">
+                <div class="p-3 rounded border bg-light">
+                  <div class="small text-muted mb-1">Platform</div>
+                  <div class="fw-bold">TransitionHub</div>
+                </div>
+
+                <div class="p-3 rounded border bg-light">
+                  <div class="small text-muted mb-1">Version</div>
+                  <div class="fw-bold">v2.4.0</div>
+                </div>
+
+                <div class="p-3 rounded border bg-light">
+                  <div class="small text-muted mb-1">Environment</div>
+                  <div class="fw-bold">Production / Local Demo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="custom-card mb-0">
+              <div class="card-header-flex">
+                <h5 class="card-title-main"><i class="bi bi-shield-check me-1 text-primary"></i> Security</h5>
+              </div>
+
+              <div class="small text-muted">
+                Role-based access is enabled for HR administrators, managers, and system owners. Password and session protection are handled through the application login flow.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/settings.js"></script>
+</body>
+</html>

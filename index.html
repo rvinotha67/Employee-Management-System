@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Employee Transition & Knowledge Management System</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5 CSS & Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-body">
+
+  <!-- Animated Background Orbs -->
+  <div class="login-bg-shape shape-1"></div>
+  <div class="login-bg-shape shape-2"></div>
+
+  <!-- Login Card -->
+  <div class="login-card">
+    <div class="login-header">
+      <div class="login-brand-icon">
+        <i class="bi bi-box-seam-fill"></i>
+      </div>
+      <h3 class="login-title">Employee Transition</h3>
+      <p class="login-subtitle">Knowledge Management & Retention Portal</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" novalidate>
+      <div class="mb-3">
+        <label for="loginEmail" class="form-label-custom">Work Email Address</label>
+        <div class="input-group">
+          <input type="email" id="loginEmail" class="form-control-custom" placeholder="admin@company.com" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="loginPassword" class="form-label-custom">Password</label>
+        <input type="password" id="loginPassword" class="form-control-custom" placeholder="••••••••" required>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+          <label class="form-check-label small text-light" for="rememberMe">Remember me</label>
+        </div>
+        <a href="#" class="small text-info text-decoration-none" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary-custom w-100 py-2 justify-content-center">
+        <i class="bi bi-box-arrow-in-right fs-5"></i> Sign In to System
+      </button>
+    </form>
+
+    <!-- Quick Demo Logins -->
+    <div class="demo-account-box text-center">
+      <div class="demo-account-title">Quick Demo Login</div>
+      <div class="d-flex gap-2 justify-content-center">
+        <button class="btn btn-sm btn-outline-light flex-fill" onclick="Auth.demoLogin('admin')">
+          <i class="bi bi-shield-check me-1"></i> Admin Portal
+        </button>
+        <button class="btn btn-sm btn-outline-light flex-fill" onclick="Auth.demoLogin('hr')">
+          <i class="bi bi-people me-1"></i> HR Manager
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-key me-2 text-primary"></i>Reset Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="small text-muted">Enter your registered work email to receive password reset instructions.</p>
+          <input type="email" class="form-control" placeholder="user@company.com">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-custom" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary-custom" onclick="App.showToast('Password reset link dispatched!', 'info')">Send Reset Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Redirect if session is active
+      Auth.redirectIfAuthenticated();
+
+      // Pre-fill remembered email
+      const remembered = Auth.getRememberedEmail();
+      if (remembered) {
+        document.getElementById('loginEmail').value = remembered;
+      }
+
+      // Login handler
+      document.getElementById('loginForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+        const remember = document.getElementById('rememberMe').checked;
+
+        const res = Auth.login(email, password, remember);
+        if (res.success) {
+          App.showToast('Login successful! Redirecting...', 'success');
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 800);
+        } else {
+          App.showToast(res.message, 'danger');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
